@@ -1,0 +1,13 @@
+# Dependencies
+# You need dependencies below.
+python3
+tensorflow 1.4.1+
+opencv3, protobuf, python3-tk
+Opensources
+
+# 安装python3依赖
+pip3 install -r requirements.txt
+
+# Start bash script
+# 启动脚本中可能需要自行修改端口号
+sudo ./start_app.sh

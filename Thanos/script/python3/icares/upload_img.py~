@@ -1,0 +1,13 @@
+import ftplib, sys
+
+def ftp_upload():
+    ftpSess = ftplib.FTP()
+    ftpSess.set_debuglevel(1)
+
+    ftpSess.connect('159.89.121.6', 1511)
+    ftpSess.login("icares", "avengers")
+
+    with open(sys.argv[1], 'rb') as fpr:
+        ftpSess.storbinary('STOR ' + sys.argv[2], fpr)
+
+    ftpSess.quit()

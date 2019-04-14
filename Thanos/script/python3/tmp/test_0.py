@@ -1,0 +1,12 @@
+def hello():
+    print(1)
+    print("hello"),print("OK")
+    print(2)
+hello()
+print(5)
+hello()
+print(6)
+hello()
+print(7)
+hello()
+print(8)

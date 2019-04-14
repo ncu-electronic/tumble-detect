@@ -1,0 +1,5 @@
+def hello():,print("OK")
+    print("hello"),print("OK")
+
+
+hello()

@@ -1,0 +1,66 @@
+import sys
+
+
+def read_py(file_path):
+    
+    fpr = open(file_path, 'r')
+    text_data = fpr.read()
+    fpr.close()
+
+    return text_data
+
+
+def write_py(file_path, processed_text):
+
+    fpw = open(file_path, 'w')
+    fpw.write(processed_text)
+    fpw.close()
+
+
+def process_py(file_path):
+
+    text_data = read_py(file_path)
+    
+    processed_text = insert_line_num(text_data)
+    
+    write_py(file_path, processed_text)
+
+
+def insert_line_num(text_data):
+
+    text_list_splited = text_data.split('\n')
+    
+    # Initiate
+    order = 1
+    delta = 0
+    real = 0
+
+    while (order + delta) <= len(text_list_splited):
+        
+        try:
+            last_letter = text_list_splited[order+delta][-1]
+        except:
+            last_letter = ':'
+        
+        if last_letter != ':':
+            text_list_splited.insert(order+delta, ', print(%d)' % order)
+            text_list_splited.insert(order+delta+1, '\n')
+            delta += 2
+
+        else:
+            text_list_splited.insert(order+delta+1, '\n')
+            delta += 1
+            pass
+
+        order += 1
+
+    processed_text = str()
+    for elem in text_list_splited:
+        processed_text += elem
+
+    return processed_text
+
+
+if __name__ == '__main__':
+
+    process_py(sys.argv[1])
